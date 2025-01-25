@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f9c0ab27ca69d30a2fe820b84e1385, type: 3}
+  m_Name: GameDataConst
+  m_EditorClassIdentifier: 
+  leftArrowColor: {r: 0.80851686, g: 0.20045885, b: 0.20045885, a: 1}
+  rightArrowColor: {r: 0.20392156, g: 0.8117647, b: 0.75419843, a: 1}
+  upArrowColor: {r: 0.41102278, g: 0.8117647, b: 0.20392156, a: 1}
+  downArrowColor: {r: 0.67762315, g: 0.20392156, b: 0.8117647, a: 1}
+  notePrefab: {fileID: 8290902099763250821, guid: b7b4ed1255f542fc5bec10f29b816aa7, type: 3}
