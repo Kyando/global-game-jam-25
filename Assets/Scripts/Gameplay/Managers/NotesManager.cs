@@ -135,7 +135,7 @@ public class NotesManager : MonoBehaviour
         var nextNote = GetNextNote();
         if (nextNote is not null)
         {
-            nextNote.transform.localScale = new Vector3(1.25f, 1.25f, 1);
+            nextNote.transform.localScale = new Vector3(1.75f, 1.75f, 1);
         }
     }
 
