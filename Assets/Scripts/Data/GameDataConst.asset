@@ -17,3 +17,23 @@ MonoBehaviour:
   upArrowColor: {r: 0.41102278, g: 0.8117647, b: 0.20392156, a: 1}
   downArrowColor: {r: 0.67762315, g: 0.20392156, b: 0.8117647, a: 1}
   notePrefab: {fileID: 8290902099763250821, guid: b7b4ed1255f542fc5bec10f29b816aa7, type: 3}
+  clientFofinhaSprites:
+  - {fileID: 21300000, guid: 099554524fd624522a97576362709426, type: 3}
+  - {fileID: 21300000, guid: 62b5fcd66a6b4db579a67f6c8153dace, type: 3}
+  - {fileID: 21300000, guid: 6e191bb9bffe877ca8464003a90cc623, type: 3}
+  - {fileID: 21300000, guid: a21894593906197d6882bcea85808224, type: 3}
+  clientJonasSprites:
+  - {fileID: 21300000, guid: 4e29b69b649c02fdeaabe389a57bd500, type: 3}
+  - {fileID: 21300000, guid: ca4343a0ee112a67db9d291d65551521, type: 3}
+  - {fileID: 21300000, guid: 709f445e01677fc3aa2537159b8d97cb, type: 3}
+  - {fileID: 21300000, guid: 5505cac0ace9c189691ef985f8ee4746, type: 3}
+  clientGarotoSprites:
+  - {fileID: 21300000, guid: ec2fbc26c617c464e8ac9869d54d647f, type: 3}
+  - {fileID: 21300000, guid: 58bf0dd243b675777957e350a2b916e6, type: 3}
+  - {fileID: 21300000, guid: ec2fbc26c617c464e8ac9869d54d647f, type: 3}
+  - {fileID: 21300000, guid: 514c66643405f50a28b15ca504ad6ed5, type: 3}
+  clientBigodeSprites:
+  - {fileID: 21300000, guid: 8ab888409ec013fc8b0b308179488e1c, type: 3}
+  - {fileID: 21300000, guid: 9c28d718b408c66ce8e6fe3c89686a64, type: 3}
+  - {fileID: 21300000, guid: 8ab888409ec013fc8b0b308179488e1c, type: 3}
+  - {fileID: 21300000, guid: b32158f252ddb9517b8f220ca255b930, type: 3}

@@ -567,18 +567,16 @@ public class NotesManager : MonoBehaviour
         if (raycastHit2D)
         {
             var note = raycastHit2D.collider.gameObject.GetComponent<MusicNote>();
-            Debug.Log("Found raycasted note" + note);
             return note;
         }
-
-        Debug.Log("No raycast found");
+        
         return null;
     }
 
     public void OnPlayerNotePressed(CallbackContext context)
     {
         var value = context.ReadValue<float>();
-        Debug.Log("OnPlayerNotePressed");
-        Debug.Log(value);
+        // Debug.Log("OnPlayerNotePressed");
+        // Debug.Log(value);
     }
 }
