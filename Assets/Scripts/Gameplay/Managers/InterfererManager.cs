@@ -38,6 +38,11 @@ public class InterfererManager : MonoBehaviour
 
     public void TurnLightSwitch(bool active)
     {
+        if (active)
+        {
+            SoundManager.instance.PlayLightAudio();
+        }
+
         lightObject.SetActive(active);
         isInteractinActive = active;
         timerCounter = 0;
