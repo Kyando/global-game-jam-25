@@ -19,7 +19,7 @@ public class InputControllerManager : MonoBehaviour
         // Enable action maps
         player1Actions.Enable();
         player2Actions.Enable();
-        
+
 
         var devices = Gamepad.all;
         if (devices.Count >= 2)
@@ -36,30 +36,36 @@ public class InputControllerManager : MonoBehaviour
     private void Update()
     {
         // Player 1 Inputs
-        if (player1Actions["note_up"].WasPressedThisFrame() || Input.GetKeyDown(KeyCode.W))
+        if (player1Actions["note_up"].WasPressedThisFrame() || Input.GetKeyDown(KeyCode.W) ||
+            Input.GetKeyDown(KeyCode.UpArrow))
         {
             NotesManager.instance.OnNotePressed(0, PlayerType.PLAYER_ONE);
         }
-        if (player1Actions["note_left"].WasPressedThisFrame()|| Input.GetKeyDown(KeyCode.A))
+
+        if (player1Actions["note_left"].WasPressedThisFrame() || Input.GetKeyDown(KeyCode.A) ||
+            Input.GetKeyDown(KeyCode.LeftArrow))
         {
             NotesManager.instance.OnNotePressed(1, PlayerType.PLAYER_ONE);
         }
-        if (player1Actions["note_down"].WasPressedThisFrame()|| Input.GetKeyDown(KeyCode.S))
+
+        if (player1Actions["note_down"].WasPressedThisFrame() || Input.GetKeyDown(KeyCode.S) ||
+            Input.GetKeyDown(KeyCode.DownArrow))
         {
             NotesManager.instance.OnNotePressed(2, PlayerType.PLAYER_ONE);
         }
-        if (player1Actions["note_right"].WasPressedThisFrame()|| Input.GetKeyDown(KeyCode.D))
+
+        if (player1Actions["note_right"].WasPressedThisFrame() || Input.GetKeyDown(KeyCode.D) ||
+            Input.GetKeyDown(KeyCode.RightArrow))
         {
             NotesManager.instance.OnNotePressed(3, PlayerType.PLAYER_ONE);
         }
 
         if (player1Actions["note_right"].WasReleasedThisFrame())
         {
-            
         }
 
         // Player 2 Inputs
-        if (player2Actions["note_right"].WasPressedThisFrame() || Input.GetKeyDown(KeyCode.RightArrow))
+        if (player2Actions["note_right"].WasPressedThisFrame())
         {
             Debug.Log("Player 2: Button Pressed");
         }

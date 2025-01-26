@@ -7,6 +7,8 @@ public class InterfererManager : MonoBehaviour
     public static InterfererManager instance;
     public Vector2 interactionTimeRange = new Vector2(20f, 30f);
     public GameObject lightObject;
+    public GameObject lightSwitchOn;
+    public GameObject lightSwitchOff;
     public bool isInteractinActive = false;
     [SerializeField] private float timerCounter = 0f;
     [SerializeField] private float nextInteractionTime = 20f;
@@ -43,6 +45,9 @@ public class InterfererManager : MonoBehaviour
             SoundManager.instance.PlayLightAudio();
         }
 
+        lightSwitchOn.SetActive(active);
+        lightSwitchOff.SetActive(!active);
+        
         lightObject.SetActive(active);
         isInteractinActive = active;
         timerCounter = 0;
