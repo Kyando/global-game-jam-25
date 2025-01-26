@@ -26,6 +26,31 @@ public abstract class AnimationConstants
         }
     }
 
+    public static int GetPedroSpriteIndexByState(PedroGhostState state)
+    {
+        switch (state)
+        {
+            case PedroGhostState.IDLE:
+                return 0;
+            case PedroGhostState.IDLE_WALKING:
+                return 0;
+            case PedroGhostState.GOING_TO_LIGHT_SWITCH:
+                return 0;
+            case PedroGhostState.LIGHT_SWITCH:
+                return 1;
+            case PedroGhostState.GOING_TO_WATER:
+                return 0;
+            case PedroGhostState.WATER:
+                return 2;
+            case PedroGhostState.GOING_TO_WASHING_MACHINE:
+                return 0;
+            case PedroGhostState.WASHING_MACHINE:
+                return 3;
+            default:
+                return 0;
+        }
+    }
+
     public static int GetClientGhostSpriteIndexByState(ClientGhostState state)
     {
         switch (state)
@@ -62,7 +87,7 @@ public abstract class AnimationConstants
                 return new List<Sprite>();
         }
     }
-    
+
     public static float GetXScaleByClientGhostType(ClientGhostType ghostType)
     {
         switch (ghostType)
@@ -79,5 +104,4 @@ public abstract class AnimationConstants
                 return 1;
         }
     }
-
 }

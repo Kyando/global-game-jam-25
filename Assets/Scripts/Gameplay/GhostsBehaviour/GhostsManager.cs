@@ -4,6 +4,7 @@ public class GhostsManager : MonoBehaviour
 {
     public static GhostsManager instance;
     public JersonBehaviour playerJerson;
+    public PedroBehaviour playerPedro;
     public CientGhostBehaviour cientGhost;
     private void Awake()
     {

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 28726fedda58a5db39e5f115d5aca637
+guid: 245e5bb0d68849ce5891fd4beebd9d9e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -68704561609467887
-    second: Pa direito_0
+      213: 2641698482785147981
+    second: Group 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 7
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pa direito_0
+      name: Group 1_0
       rect:
         serializedVersion: 2
-        x: 288
-        y: 150
-        width: 98
-        height: 108
+        x: 145
+        y: 23
+        width: 241
+        height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 11891d2b099eb0ff0800000000000000
-      internalID: -68704561609467887
+      spriteID: d4cd81616c239a420800000000000000
+      internalID: 2641698482785147981
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Pa direito_0: -68704561609467887
+      Group 1_0: 2641698482785147981
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -123,7 +123,8 @@ public class NotesManager : MonoBehaviour
             if (!noteToRemove.isNotePlayed)
             {
                 UIManager.Instance.OnNoteMiss();
-                playerMusicMap[currentPlayerType].targetVolume = 0;
+                GameDataManager.instance.UpdateScore(PlayerType.PLAYER_ONE, false);
+                playerMusicMap[currentPlayerType].targetVolume = playerMusicMap[currentPlayerType].minVolume;
             }
 
             notes.Remove(noteToRemove);
@@ -144,11 +145,11 @@ public class NotesManager : MonoBehaviour
         // Example: 1s, 2s, 3s, etc. These should be based on your song's rhythm
         float[] beats =
         {
-            2.4f,
-            3.2f,
-            3.6f,
-            4.0f,
-            4.4f,
+            // 2.4f,
+            // 3.2f,
+            // 3.6f,
+            // 4.0f,
+            // 4.4f,
             9.6f,
             10.4f,
             11.2f,
@@ -546,7 +547,6 @@ public class NotesManager : MonoBehaviour
         //     UIManager.Instance.OnNoteMiss();
         //     return;
         // }
-
         
         nextNote.OnNotePlayed();
         if (nextNote.noteId == noteId)
