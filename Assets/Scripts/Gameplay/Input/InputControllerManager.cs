@@ -36,23 +36,30 @@ public class InputControllerManager : MonoBehaviour
     private void Update()
     {
         // Player 1 Inputs
-        if (player1Actions["note_right"].WasPressedThisFrame())
+        if (player1Actions["note_up"].WasPressedThisFrame() || Input.GetKeyDown(KeyCode.W))
         {
-            Debug.Log("Player 1: Button Pressed");
+            NotesManager.instance.OnNotePressed(0, PlayerType.PLAYER_ONE);
         }
-
-        // if (player1Actions["ButtonPress"].IsPressed())
-        // {
-        //     Debug.Log("Player 1: Button Held");
-        // }
+        if (player1Actions["note_left"].WasPressedThisFrame()|| Input.GetKeyDown(KeyCode.A))
+        {
+            NotesManager.instance.OnNotePressed(1, PlayerType.PLAYER_ONE);
+        }
+        if (player1Actions["note_down"].WasPressedThisFrame()|| Input.GetKeyDown(KeyCode.S))
+        {
+            NotesManager.instance.OnNotePressed(2, PlayerType.PLAYER_ONE);
+        }
+        if (player1Actions["note_right"].WasPressedThisFrame()|| Input.GetKeyDown(KeyCode.D))
+        {
+            NotesManager.instance.OnNotePressed(3, PlayerType.PLAYER_ONE);
+        }
 
         if (player1Actions["note_right"].WasReleasedThisFrame())
         {
-            Debug.Log("Player 1: Button Released");
+            
         }
 
         // Player 2 Inputs
-        if (player2Actions["note_right"].WasPressedThisFrame())
+        if (player2Actions["note_right"].WasPressedThisFrame() || Input.GetKeyDown(KeyCode.RightArrow))
         {
             Debug.Log("Player 2: Button Pressed");
         }

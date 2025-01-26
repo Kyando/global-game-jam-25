@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 using static UnityEngine.InputSystem.InputAction;
 
 public class NotesManager : MonoBehaviour
 {
+    public static NotesManager instance;
     public GameObject notePrefab;
     public Transform spawnPoint;
     public Transform hitPoint; // The hit area position
@@ -12,10 +14,28 @@ public class NotesManager : MonoBehaviour
     public float noteTravelTime = 2f; // Time it takes for a note to travel from spawn to hit area
     public GameObject musicPlayerParent;
 
+    public float perfectHitThreshold = 0.1f;
+    public float greatHitThreshold = 0.5f;
+
+    private Dictionary<PlayerType, MusicVolumeController> playerMusicMap =
+        new Dictionary<PlayerType, MusicVolumeController>();
+
     [SerializeField] private float songTime; // Current time in the song
     [SerializeField] private Queue<float> beatTimes = new Queue<float>(); // Store beat times (in seconds)
     [SerializeField] private List<MusicNote> notes = new List<MusicNote>();
     private AudioSource audioSource; // Reference to the music audio source
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -24,10 +44,16 @@ public class NotesManager : MonoBehaviour
         LoadBeatMap();
         for (int i = 0; i < musicPlayerParent.transform.childCount; i++)
         {
-            var childAudioSource = musicPlayerParent.transform.GetChild(i).GetComponent<AudioSource>();
+            var childTransform = musicPlayerParent.transform.GetChild(i);
+            var childAudioSource = childTransform.GetComponent<AudioSource>();
             childAudioSource.Play();
+
+            var musicVolumeController = childTransform.GetComponent<MusicVolumeController>();
+            if (musicVolumeController is not null)
+            {
+                playerMusicMap.Add(musicVolumeController.playerType, musicVolumeController);
+            }
         }
-        
     }
 
     void Update()
@@ -44,6 +70,14 @@ public class NotesManager : MonoBehaviour
             // Spawn a note for the next beat
             var newNoteObj = Instantiate(notePrefab, spawnPoint.position, Quaternion.identity);
             var newNote = newNoteObj.GetComponent<MusicNote>();
+            SpriteRenderer newNoteSpriteRenderer =
+                newNote.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+            int noteIndex = Random.Range(0, 4);
+            int zRotation = noteIndex * 90;
+
+            newNote.noteId = noteIndex;
+            newNote.transform.localEulerAngles = new Vector3(0, 0, zRotation);
+            newNoteSpriteRenderer.color = GameDataManager.instance.GetColorByIndex(noteIndex);
             notes.Add(newNote.GetComponent<MusicNote>());
             newNote.beatTime = beatTimes.Peek();
             beatTimes.Dequeue();
@@ -53,6 +87,9 @@ public class NotesManager : MonoBehaviour
     private void MoveNotes()
     {
         List<MusicNote> notesToRemove = new List<MusicNote>();
+
+
+        var currentPlayerType = PlayerType.PLAYER_ONE;
         foreach (MusicNote note in notes)
         {
             // Calculate total distance from spawn to destroy point
@@ -83,9 +120,21 @@ public class NotesManager : MonoBehaviour
         while (notesToRemove.Count > 0)
         {
             var noteToRemove = notesToRemove[0];
+            if (!noteToRemove.isNotePlayed)
+            {
+                UIManager.Instance.OnNoteMiss();
+                playerMusicMap[currentPlayerType].targetVolume = 0;
+            }
+
             notes.Remove(noteToRemove);
             notesToRemove.RemoveAt(0);
             Destroy(noteToRemove.gameObject);
+        }
+
+        var nextNote = GetNextNote();
+        if (nextNote is not null)
+        {
+            nextNote.transform.localScale = new Vector3(1.25f, 1.25f, 1);
         }
     }
 
@@ -95,6 +144,11 @@ public class NotesManager : MonoBehaviour
         // Example: 1s, 2s, 3s, etc. These should be based on your song's rhythm
         float[] beats =
         {
+            2.4f,
+            3.2f,
+            3.6f,
+            4.0f,
+            4.4f,
             9.6f,
             10.4f,
             11.2f,
@@ -466,6 +520,59 @@ public class NotesManager : MonoBehaviour
         {
             beatTimes.Enqueue(beat);
         }
+    }
+
+    public void OnNotePressed(int noteId, PlayerType playerType)
+    {
+        MusicNote nextNote = GetNextNote();
+
+        if (nextNote is null || nextNote.isNotePlayed)
+        {
+            return;
+        }
+
+        // float notePosX = nextNote.transform.position.x;
+        // float hitPosX = hitPoint.position.x;
+        //
+        //
+        // float beatTime = nextNote.beatTime;
+        // float currentBeatDiff = Mathf.Abs(songTime - beatTime);
+        //
+        // // float dist = Mathf.Abs(notePosX - hitPosX);
+        // float dist = currentBeatDiff;
+        //
+        // if (dist > greatHitThreshold)
+        // {
+        //     UIManager.Instance.OnNoteMiss();
+        //     return;
+        // }
+
+        
+        nextNote.OnNotePlayed();
+        if (nextNote.noteId == noteId)
+        {
+            UIManager.Instance.OnNoteHit();
+            playerMusicMap[playerType].targetVolume = 1;
+        }
+        else
+        {
+            UIManager.Instance.OnNoteMiss();
+            playerMusicMap[playerType].targetVolume = 0;
+        }
+    }
+
+    private MusicNote GetNextNote()
+    {
+        var raycastHit2D = Physics2D.Raycast(hitPoint.transform.position, Vector2.zero);
+        if (raycastHit2D)
+        {
+            var note = raycastHit2D.collider.gameObject.GetComponent<MusicNote>();
+            Debug.Log("Found raycasted note" + note);
+            return note;
+        }
+
+        Debug.Log("No raycast found");
+        return null;
     }
 
     public void OnPlayerNotePressed(CallbackContext context)
