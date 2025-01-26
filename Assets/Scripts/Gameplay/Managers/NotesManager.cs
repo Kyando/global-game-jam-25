@@ -551,11 +551,13 @@ public class NotesManager : MonoBehaviour
         nextNote.OnNotePlayed();
         if (nextNote.noteId == noteId)
         {
+            GameDataManager.instance.UpdateScore(PlayerType.PLAYER_ONE, true);
             UIManager.Instance.OnNoteHit();
             playerMusicMap[playerType].targetVolume = 1;
         }
         else
         {
+            GameDataManager.instance.UpdateScore(PlayerType.PLAYER_ONE, false);
             UIManager.Instance.OnNoteMiss();
             playerMusicMap[playerType].targetVolume = 0;
         }

@@ -10,10 +10,11 @@ public class GameDataSO : ScriptableObject
     public Color upArrowColor = new Color(1f, 1f, 1f, 1f);
     public Color downArrowColor = new Color(1f, 1f, 1f, 1f);
     public GameObject notePrefab;
-    
+
+    public int maxGameScore = 520;
+
     public List<Sprite> clientFofinhaSprites = new List<Sprite>();
     public List<Sprite> clientJonasSprites = new List<Sprite>();
     public List<Sprite> clientGarotoSprites = new List<Sprite>();
     public List<Sprite> clientBigodeSprites = new List<Sprite>();
-    
 }

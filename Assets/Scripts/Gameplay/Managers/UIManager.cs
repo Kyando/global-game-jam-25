@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -5,7 +6,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     public TextMeshProUGUI hitSuccessText;
-    
+    public RectTransform scoreMarker;
+
     public void Awake()
     {
         if (Instance == null)
@@ -23,10 +25,22 @@ public class UIManager : MonoBehaviour
         hitSuccessText.text = "Sucess";
         hitSuccessText.color = Color.green;
     }
+
     public void OnNoteMiss()
     {
-        
         hitSuccessText.text = "Miss";
         hitSuccessText.color = Color.gray;
+    }
+
+    public void UpdateGameScoreMarker()
+    {
+        if (scoreMarker is null)
+        {
+            return;
+        }
+
+        var basePosition = scoreMarker.transform.position;
+        basePosition.y = GameDataManager.instance.gameScore;
+        scoreMarker.transform.position = basePosition;
     }
 }
