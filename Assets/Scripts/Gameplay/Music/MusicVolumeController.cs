@@ -5,6 +5,7 @@ public class MusicVolumeController : MonoBehaviour
     private AudioSource audioSource;
     public PlayerType playerType = PlayerType.UNDEFINED;
     public float targetVolume = 1;
+    public float minVolume = 0.3f;
     public float volumeTransitionSpeed = 1;
 
     private void Awake()
@@ -18,7 +19,7 @@ public class MusicVolumeController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.O))
         {
-            targetVolume = 0;
+            targetVolume = minVolume;
         }
         else if (Input.GetKeyDown(KeyCode.P))
         {

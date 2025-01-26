@@ -111,6 +111,13 @@ public class CientGhostBehaviour : MonoBehaviour
     {
         this.ghostState = ClientGhostState.WAITING_DRESSED;
         UpdateGhostSprites();
+        GhostsManager.instance.OnNewGhostClient();
+    }
+
+    public void StartStateWaitingUndressed()
+    {
+        this.ghostState = ClientGhostState.WAITING_UNDRESSED;
+        UpdateGhostSprites();
     }
 
     public void StartStateLeaving(bool success)

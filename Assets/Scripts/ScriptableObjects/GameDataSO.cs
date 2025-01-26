@@ -13,6 +13,8 @@ public class GameDataSO : ScriptableObject
 
     public int maxGameScore = 520;
 
+    public List<Sprite> playerJersonSprites = new List<Sprite>();
+    
     public List<Sprite> clientFofinhaSprites = new List<Sprite>();
     public List<Sprite> clientJonasSprites = new List<Sprite>();
     public List<Sprite> clientGarotoSprites = new List<Sprite>();

@@ -3,22 +3,26 @@ using UnityEngine;
 
 public abstract class AnimationConstants
 {
-    public static string GetClientGhostAnimationByState(ClientGhostState state)
+    public static int GetJersonSpriteIndexByState(PlayerGhostState state)
     {
         switch (state)
         {
-            case ClientGhostState.ENTERING:
-                return "entering";
-            case ClientGhostState.WAITING_DRESSED:
-                return "waiting_dressed";
-            case ClientGhostState.WAITING_UNDRESSED:
-                return "waiting_undressed";
-            case ClientGhostState.LEAVING_SUCCESS:
-                return "leaving_success";
-            case ClientGhostState.LEAVING_FAILED:
-                return "leaving_failed";
+            case PlayerGhostState.IDLE:
+                return 0;
+            case PlayerGhostState.IDLE_WALKING:
+                return 0;
+            case PlayerGhostState.RECEIVING_CLIENT:
+                return 0;
+            case PlayerGhostState.GOING_TO_WASH:
+                return 2;
+            case PlayerGhostState.GETTING_CLOTHS:
+                return 0;
+            case PlayerGhostState.WAITING_WASH_MACHINE:
+                return 0;
+            case PlayerGhostState.DELIVERYING_CLOTHS:
+                return 2;
             default:
-                return null;
+                return 0;
         }
     }
 
@@ -70,7 +74,7 @@ public abstract class AnimationConstants
             case ClientGhostType.GAROTO:
                 return -1;
             case ClientGhostType.BIGODE:
-                return 1;
+                return -1;
             default:
                 return 1;
         }

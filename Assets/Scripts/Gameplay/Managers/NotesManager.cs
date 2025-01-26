@@ -559,7 +559,7 @@ public class NotesManager : MonoBehaviour
         {
             GameDataManager.instance.UpdateScore(PlayerType.PLAYER_ONE, false);
             UIManager.Instance.OnNoteMiss();
-            playerMusicMap[playerType].targetVolume = 0;
+            playerMusicMap[playerType].targetVolume = playerMusicMap[playerType].minVolume;
         }
     }
 

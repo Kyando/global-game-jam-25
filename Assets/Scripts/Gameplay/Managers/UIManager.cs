@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
         hitSuccessText.color = Color.gray;
     }
 
-    public void UpdateGameScoreMarker()
+    public void UpdateGameScoreMarker(float score)
     {
         if (scoreMarker is null)
         {
@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
         }
 
         var basePosition = scoreMarker.transform.position;
-        basePosition.y = GameDataManager.instance.gameScore;
+        basePosition.y = score;
         scoreMarker.transform.position = basePosition;
     }
 }

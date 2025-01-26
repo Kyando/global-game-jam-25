@@ -1,0 +1,10 @@
+public enum PlayerGhostState
+{
+    IDLE,
+    IDLE_WALKING,
+    RECEIVING_CLIENT,
+    GOING_TO_WASH,
+    WAITING_WASH_MACHINE,
+    GETTING_CLOTHS,
+    DELIVERYING_CLOTHS,
+}

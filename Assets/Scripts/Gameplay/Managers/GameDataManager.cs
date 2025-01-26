@@ -44,9 +44,16 @@ public class GameDataManager : MonoBehaviour
         gameScore += scoreToAdd;
 
         if (gameScore > gameDataSo.maxGameScore)
+        {
             gameScore = gameDataSo.maxGameScore;
+        }
+
         if (gameScore < -gameDataSo.maxGameScore)
+        {
             gameScore = -gameDataSo.maxGameScore;
-        UIManager.Instance.UpdateGameScoreMarker();
+        }
+
+        float markerPosition = gameScore + gameDataSo.maxGameScore;
+        UIManager.Instance.UpdateGameScoreMarker(markerPosition);
     }
 }

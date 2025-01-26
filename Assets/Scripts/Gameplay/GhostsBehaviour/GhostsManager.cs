@@ -2,18 +2,23 @@ using UnityEngine;
 
 public class GhostsManager : MonoBehaviour
 {
-    
-    
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static GhostsManager instance;
+    public JersonBehaviour playerJerson;
+    public CientGhostBehaviour cientGhost;
+    private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void OnNewGhostClient()
     {
-        
+        playerJerson.StartStateReceivingClient();
     }
 }

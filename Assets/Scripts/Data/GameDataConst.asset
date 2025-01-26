@@ -17,6 +17,11 @@ MonoBehaviour:
   upArrowColor: {r: 0.41102278, g: 0.8117647, b: 0.20392156, a: 1}
   downArrowColor: {r: 0.67762315, g: 0.20392156, b: 0.8117647, a: 1}
   notePrefab: {fileID: 8290902099763250821, guid: b7b4ed1255f542fc5bec10f29b816aa7, type: 3}
+  maxGameScore: 520
+  playerJersonSprites:
+  - {fileID: 21300000, guid: 6e93fdbf5c6a5d6db8030655b189e656, type: 3}
+  - {fileID: 21300000, guid: 62b8853cfff58dfeeaac56da0ec99dcf, type: 3}
+  - {fileID: 21300000, guid: ac7a826ec39408b89a1a739866bac097, type: 3}
   clientFofinhaSprites:
   - {fileID: 21300000, guid: 099554524fd624522a97576362709426, type: 3}
   - {fileID: 21300000, guid: 62b5fcd66a6b4db579a67f6c8153dace, type: 3}
